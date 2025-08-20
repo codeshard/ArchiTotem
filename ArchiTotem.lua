@@ -355,7 +355,6 @@ function ArchiTotem_UpdateCooldown(buttonName, duration)
 end
 
 function ArchiTotem_ActiveTotem()
-    -- Set the active totem
     local currentTime = GetTime()
     ArchiTotemActiveTotem[ArchiTotemCastedElement] = ArchiTotemCastedTotem
     ArchiTotemActiveTotem[ArchiTotemCastedElement].casted = currentTime
@@ -367,7 +366,7 @@ function ArchiTotem_ActiveTotem()
         local buttonNumber = tonumber(string.sub(ArchiTotemCastedButton, -1))
 
         if buttonNumber > 1 then
-            local baseButtonName = string.sub(ArchiTotemCastedButton, 1, -2) -- Extract base button name
+            local baseButtonName = string.sub(ArchiTotemCastedButton, 1, -2)
 
             for i = buttonNumber, 2, -1 do
                 local topButton = baseButtonName .. i
@@ -606,7 +605,6 @@ function ArchiTotem_Switch(arg1, arg2)
         end
     end
 
-    -- Update cooldown frames for each totem
     for _, arg in ipairs({arg1, arg2}) do
         local totemData = ArchiTotem_TotemData[arg]
         local spellID = ArchiTotem_GetSpellId(totemData.name)
@@ -619,8 +617,6 @@ function ArchiTotem_Switch(arg1, arg2)
             end
         end
     end
-
-    -- Refresh totem textures
     ArchiTotem_UpdateTextures()
 end
 
@@ -682,7 +678,6 @@ function ArchiTotem_SetDirection(dir)
         return
     end
 
-    -- Update duration text positions
     local durationTexts = {
         EarthDurationText = ArchiTotemButton_Earth1,
         FireDurationText = ArchiTotemButton_Fire1,
@@ -736,7 +731,6 @@ function ArchiTotem_Order(first, second, third, forth)
             if i == 1 then
                 currentButton:SetPoint("CENTER", ArchiTotemFrame, "CENTER")
             else
-                -- Anchor subsequent buttons to the previous button
                 currentButton:SetPoint("BOTTOMLEFT", _G[buttons[i - 1]], "BOTTOMRIGHT")
             end
         end
@@ -851,7 +845,7 @@ function ArchiTotem_Command(cmd)
         end
     elseif arg[1] == "order" then
         ArchiTotem_Order(arg[2], arg[3], arg[4], arg[5])
-        if arg[2] and arg[3] and arg[4] and arg[5] and arg[6] then -- check english elements
+        if arg[2] and arg[3] and arg[4] and arg[5] and arg[6] then
             ArchiTotem_Print(
                 L["Order set to: "] .. arg[2] .. ", " .. arg[3] .. ", " .. arg[4] .. ", " .. arg[5] .. ", " .. arg[6])
         end
