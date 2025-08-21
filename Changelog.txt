@@ -1,3 +1,7 @@
+1.6 -> 1.7
+by Beatboy
+- Boost duration if player has Totemic Mastery talent
+
 1.5 -> 1.6
 by Durotavich
 - Removed Mana Tide Totem (Turtle WoW Patch v1.17.2).

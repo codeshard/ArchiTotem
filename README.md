@@ -1,4 +1,4 @@
-# ArchiTotem (TWoW Edition 1.17.2 🐢)
+# ArchiTotem (TWoW Edition 1.18.0 🐢)
 
 ![GitHub Release](https://img.shields.io/github/v/release/codeshard/ArchiTotem?style=for-the-badge)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/codeshard/ArchiTotem/total?style=for-the-badge)
@@ -14,7 +14,8 @@ Based on https://github.com/Road-block/ArchiTotem, and https://github.com/Bombg/
  - Track totems cooldowns and timers.
  - Tracks out of range indicator per totems that apply an aura on the player.
  - Included Totemic Recall(TWoW Spell) in the bar.
- 
+ - Accounts for using the Totemic Mastery talent (v1.18.0)
+
 For more insights plz check the [Changelog](https://github.com/codeshard/ArchiTotem/blob/master/Changelog.txt).
 
 ## Screenshots
@@ -38,7 +39,7 @@ For more insights plz check the [Changelog](https://github.com/codeshard/ArchiTo
  - Unpack the zip file.
  - Rename the folder to `ArchiTotem`.
  - Copy the folder to `TWoW-Directory\Interface\AddOns`
- - Restart TWoW Client 
+ - Restart TWoW Client
 
 ## Commands
 You can use either `/architotem` or `/at` to run a command
