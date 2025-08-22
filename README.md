@@ -1,4 +1,4 @@
-# ArchiTotem (TWoW Edition 1.17.2 🐢)
+# ArchiTotem (TWoW Edition 1.18.0 🐢)
 
 ![GitHub Release](https://img.shields.io/github/v/release/codeshard/ArchiTotem?style=for-the-badge)
 ![GitHub Downloads (all assets, all releases)](https://img.shields.io/github/downloads/codeshard/ArchiTotem/total?style=for-the-badge)
@@ -10,7 +10,7 @@ Based on https://github.com/Road-block/ArchiTotem, and https://github.com/Bombg/
 
 ## Features
  - All totems in a single bar.
- - Fixed totems tooltips and descriptions to match TWoW 1.17.2
+ - Fixed totems tooltips and descriptions to match TWoW 1.18.0
  - Track totems cooldowns and timers.
  - Tracks out of range indicator per totems that apply an aura on the player.
  - Included Totemic Recall(TWoW Spell) in the bar.
