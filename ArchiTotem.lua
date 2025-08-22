@@ -14,13 +14,32 @@ ArchiTotemActiveTotem = {}
 
 local totemElements = {"Earth", "Fire", "Water", "Air", "Totemic"}
 
-local ArchiTotemPopout = {"ArchiTotemButton_Earth2", "ArchiTotemButton_Earth3", "ArchiTotemButton_Earth4",
-                          "ArchiTotemButton_Earth5", "ArchiTotemButton_Fire2", "ArchiTotemButton_Fire3",
-                          "ArchiTotemButton_Fire4", "ArchiTotemButton_Fire5", "ArchiTotemButton_Water2",
-                          "ArchiTotemButton_Water3", "ArchiTotemButton_Water4", "ArchiTotemButton_Water5",
-                          "ArchiTotemButton_Air2", "ArchiTotemButton_Air3", "ArchiTotemButton_Air4",
-                          "ArchiTotemButton_Air5", "ArchiTotemButton_Air6", "ArchiTotemButton_Air7",
-                          "ArchiTotemButton_Totemic1"}
+local ArchiTotemPopout = {
+    -- Earth Totems
+    "ArchiTotemButton_Earth2",
+    "ArchiTotemButton_Earth3",
+    "ArchiTotemButton_Earth4",
+    "ArchiTotemButton_Earth5",
+    -- Fire Totems
+    "ArchiTotemButton_Fire2",
+    "ArchiTotemButton_Fire3",
+    "ArchiTotemButton_Fire4",
+    "ArchiTotemButton_Fire5",
+    -- Water Totems
+    "ArchiTotemButton_Water2",
+    "ArchiTotemButton_Water3",
+    "ArchiTotemButton_Water4",
+    "ArchiTotemButton_Water5",
+    -- Air Totems
+    "ArchiTotemButton_Air2",
+    "ArchiTotemButton_Air3",
+    "ArchiTotemButton_Air4",
+    "ArchiTotemButton_Air5",
+    "ArchiTotemButton_Air6",
+    "ArchiTotemButton_Air7",
+    -- Totemic Recall
+    "ArchiTotemButton_Totemic1"
+}
 
 if not ArchiTotem_Options then
     ArchiTotem_Options = {
@@ -76,224 +95,176 @@ local function totemicMastery()
 end
 
 function ArchiTotem_InitializeData()
+    local totemDefinitions = {
+        Earth = {{
+            name = "Earthbind Totem",
+            icon = "Interface\\Icons\\Spell_Nature_StrengthOfEarthTotem02",
+            duration = 45,
+            cooldown = 15,
+            buff = false
+        }, {
+            name = "Tremor Totem",
+            icon = "Interface\\Icons\\Spell_Nature_TremorTotem",
+            duration = 120,
+            cooldown = 0,
+            buff = false
+        }, {
+            name = "Strength of Earth Totem",
+            icon = "Interface\\Icons\\Spell_Nature_EarthBindTotem",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Stoneskin Totem",
+            icon = "Interface\\Icons\\Spell_Nature_StoneSkinTotem",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Stoneclaw Totem",
+            icon = "Interface\\Icons\\Spell_Nature_StoneClawTotem",
+            duration = 15,
+            cooldown = 30,
+            buff = false
+        }},
+        Fire = {{
+            name = "Searing Totem",
+            icon = "Interface\\Icons\\Spell_Fire_SearingTotem",
+            duration = 55,
+            cooldown = 0,
+            buff = false
+        }, {
+            name = "Fire Nova Totem",
+            icon = "Interface\\Icons\\Spell_Fire_SealOfFire",
+            duration = 5,
+            cooldown = 15,
+            buff = false
+        }, {
+            name = "Magma Totem",
+            icon = "Interface\\Icons\\Spell_Fire_SelfDestruct",
+            duration = 20,
+            cooldown = 0,
+            buff = false
+        }, {
+            name = "Frost Resistance Totem",
+            icon = "Interface\\Icons\\Spell_FrostResistanceTotem_01",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Flametongue Totem",
+            icon = "Interface\\Icons\\Spell_Nature_GuardianWard",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }},
+        Water = {{
+            name = "Mana Spring Totem",
+            icon = "Interface\\Icons\\Spell_Nature_ManaRegenTotem",
+            duration = 60,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Fire Resistance Totem",
+            icon = "Interface\\Icons\\Spell_FireResistanceTotem_01",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Poison Cleansing Totem",
+            icon = "Interface\\Icons\\Spell_Nature_PoisonCleansingTotem",
+            duration = 120,
+            cooldown = 0,
+            buff = false
+        }, {
+            name = "Disease Cleansing Totem",
+            icon = "Interface\\Icons\\Spell_Nature_DiseaseCleansingTotem",
+            duration = 120,
+            cooldown = 0,
+            buff = false
+        }, {
+            name = "Healing Stream Totem",
+            icon = "Interface\\Icons\\INV_Spear_04",
+            duration = 60,
+            cooldown = 0,
+            buff = true
+        }},
+        Air = {{
+            name = "Tranquil Air Totem",
+            icon = "Interface\\Icons\\Spell_Nature_Brilliance",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Grounding Totem",
+            icon = "Interface\\Icons\\Spell_Nature_GroundingTotem",
+            duration = 45,
+            cooldown = 15,
+            buff = true
+        }, {
+            name = "Windfury Totem",
+            icon = "Interface\\Icons\\Spell_Nature_Windfury",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Grace of Air Totem",
+            icon = "Interface\\Icons\\Spell_Nature_InvisibilityTotem",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Nature Resistance Totem",
+            icon = "Interface\\Icons\\Spell_Nature_NatureResistanceTotem",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Windwall Totem",
+            icon = "Interface\\Icons\\Spell_Nature_EarthBind",
+            duration = 120,
+            cooldown = 0,
+            buff = true
+        }, {
+            name = "Sentry Totem",
+            icon = "Interface\\Icons\\Spell_Nature_RemoveCurse",
+            duration = 300,
+            cooldown = 0,
+            buff = true
+        }},
+        Totemic = {{
+            name = "Totemic Recall",
+            icon = "Interface\\Icons\\Spell_Shaman_TotemRecall",
+            duration = 0,
+            cooldown = 6,
+            buff = false
+        }}
+    }
+
     ArchiTotem_TotemData = {}
+    local hasMastery = totemicMastery()
 
-    local earthTotems = {{
-        button = "ArchiTotemButton_Earth1",
-        icon = "Interface\\Icons\\Spell_Nature_StrengthOfEarthTotem02",
-        name = "Earthbind Totem",
-        duration = 45,
-        cooldown = 15,
-        buff = false
-    }, {
-        button = "ArchiTotemButton_Earth2",
-        icon = "Interface\\Icons\\Spell_Nature_TremorTotem",
-        name = "Tremor Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = false
-    }, {
-        button = "ArchiTotemButton_Earth3",
-        icon = "Interface\\Icons\\Spell_Nature_EarthBindTotem",
-        name = "Strength of Earth Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Earth4",
-        icon = "Interface\\Icons\\Spell_Nature_StoneSkinTotem",
-        name = "Stoneskin Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Earth5",
-        icon = "Interface\\Icons\\Spell_Nature_StoneClawTotem",
-        name = "Stoneclaw Totem",
-        duration = 15,
-        cooldown = 30,
-        buff = false
-    }}
+    for category, totems in pairs(totemDefinitions) do
+        for i, data in ipairs(totems) do
+            local buttonName = "ArchiTotemButton_" .. category .. i
+            local finalDuration = data.duration
 
-    local fireTotems = {{
-        button = "ArchiTotemButton_Fire1",
-        icon = "Interface\\Icons\\Spell_Fire_SearingTotem",
-        name = "Searing Totem",
-        duration = 55,
-        cooldown = 0,
-        buff = false
-    }, {
-        button = "ArchiTotemButton_Fire2",
-        icon = "Interface\\Icons\\Spell_Fire_SealOfFire",
-        name = "Fire Nova Totem",
-        duration = 5,
-        cooldown = 15,
-        buff = false
-    }, {
-        button = "ArchiTotemButton_Fire3",
-        icon = "Interface\\Icons\\Spell_Fire_SelfDestruct",
-        name = "Magma Totem",
-        duration = 20,
-        cooldown = 0,
-        buff = false
-    }, {
-        button = "ArchiTotemButton_Fire4",
-        icon = "Interface\\Icons\\Spell_FrostResistanceTotem_01",
-        name = "Frost Resistance Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Fire5",
-        icon = "Interface\\Icons\\Spell_Nature_GuardianWard",
-        name = "Flametongue Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }}
-
-    local waterTotems = {{
-        button = "ArchiTotemButton_Water1",
-        icon = "Interface\\Icons\\Spell_Nature_ManaRegenTotem",
-        name = "Mana Spring Totem",
-        duration = 60,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Water2",
-        icon = "Interface\\Icons\\Spell_FireResistanceTotem_01",
-        name = "Fire Resistance Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Water3",
-        icon = "Interface\\Icons\\Spell_Nature_PoisonCleansingTotem",
-        name = "Poison Cleansing Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = false
-    }, {
-        button = "ArchiTotemButton_Water4",
-        icon = "Interface\\Icons\\Spell_Nature_DiseaseCleansingTotem",
-        name = "Disease Cleansing Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = false
-    }, {
-        button = "ArchiTotemButton_Water5",
-        icon = "Interface\\Icons\\INV_Spear_04",
-        name = "Healing Stream Totem",
-        duration = 60,
-        cooldown = 0,
-        buff = true
-    }}
-
-    local airTotems = {{
-        button = "ArchiTotemButton_Air1",
-        icon = "Interface\\Icons\\Spell_Nature_Brilliance",
-        name = "Tranquil Air Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Air2",
-        icon = "Interface\\Icons\\Spell_Nature_GroundingTotem",
-        name = "Grounding Totem",
-        duration = 45,
-        cooldown = 15,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Air3",
-        icon = "Interface\\Icons\\Spell_Nature_Windfury",
-        name = "Windfury Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Air4",
-        icon = "Interface\\Icons\\Spell_Nature_InvisibilityTotem",
-        name = "Grace of Air Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Air5",
-        icon = "Interface\\Icons\\Spell_Nature_NatureResistanceTotem",
-        name = "Nature Resistance Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Air6",
-        icon = "Interface\\Icons\\Spell_Nature_EarthBind",
-        name = "Windwall Totem",
-        duration = 120,
-        cooldown = 0,
-        buff = true
-    }, {
-        button = "ArchiTotemButton_Air7",
-        icon = "Interface\\Icons\\Spell_Nature_RemoveCurse",
-        name = "Sentry Totem",
-        duration = 300,
-        cooldown = 0,
-        buff = true
-    }}
-
-    local totemicTotems = {{
-        button = "ArchiTotemButton_Totemic1",
-        icon = "Interface\\Icons\\Spell_Shaman_TotemRecall",
-        name = "Totemic Recall",
-        duration = 0,
-        cooldown = 6,
-        buff = false
-    }}
-
-    local function addTotemData(button, icon, name, duration, cooldown, buff)
-        ArchiTotem_TotemData[button] = {
-            icon = icon,
-            name = name,
-            baseDuration = duration,
-            cooldown = cooldown,
-            cooldownstarted = nil,
-            casted = nil,
-            buff = buff
-        }
-    end
-
-    local allTotems = {{
-        group = "earthTotems",
-        data = earthTotems
-    }, {
-        group = "fireTotems",
-        data = fireTotems
-    }, {
-        group = "waterTotems",
-        data = waterTotems
-    }, {
-        group = "airTotems",
-        data = airTotems
-    }, {
-        group = "totemicTotems",
-        data = totemicTotems
-    }}
-
-    for _, totemGroup in ipairs(allTotems) do
-        for _, totem in ipairs(totemGroup.data) do
-            addTotemData(totem.button, totem.icon, totem.name, totem.duration, totem.cooldown, totem.buff)
-        end
-    end
-
-    if totemicMastery() then
-        for button, data in pairs(ArchiTotem_TotemData) do
-            if data.buff then
-                data.duration = math.floor(data.baseDuration * 1.2 + 0.5)
-            else                
-                data.duration = data.baseDuration
+            if hasMastery and data.buff then
+                finalDuration = math.floor(data.duration * 1.2 + 0.5)
             end
+
+            ArchiTotem_TotemData[buttonName] = {
+                icon = data.icon,
+                name = data.name,
+                baseDuration = data.duration,
+                duration = finalDuration,
+                cooldown = data.cooldown,
+                buff = data.buff,
+                cooldownstarted = nil,
+                casted = nil
+            }
         end
     end
-
 end
 
 function ArchiTotem_Print(msg, type)
@@ -332,8 +303,7 @@ function ArchiTotem_OnLoad()
         SLASH_ARCHITOTEM2 = "/at"
         SlashCmdList["ARCHITOTEM"] = ArchiTotem_Command
 
-        DEFAULT_CHAT_FRAME:AddMessage("|CFF20B2AAArchiTotem|r by " .. author .. " " .. L["ver."] .. " " .. version ..
-                                          " " .. L["loaded"] .. ".")
+        DEFAULT_CHAT_FRAME:AddMessage("|CFF20B2AAArchiTotem|r by " .. author .. " " .. L["ver."] .. " " .. version .. " " .. L["loaded"] .. ".")
 
     else
         this:UnregisterAllEvents()
@@ -349,7 +319,7 @@ function ArchiTotem_UpdateCooldown(buttonName, duration)
         CooldownFrame_SetTimer(cooldownFrame, GetTime(), duration, 1)
     else
         if ArchiTotem_Options["Debug"] then
-            ArchiTotem_Print("+++++" .. buttonName .. " NOT FOUND")
+            ArchiTotem_Print("+++++" .. buttonName .. " NOT FOUND", "debug")
         end
     end
 end
@@ -381,7 +351,7 @@ function ArchiTotem_ActiveTotem()
 
             local bottomButton = baseButtonName .. 1
             local duration = ArchiTotem_TotemData[bottomButton].cooldown
-            duration = (duration == 0) and 1.5 or duration -- Default to 1.5 if duration is 0
+            duration = (duration == 0) and 1.5 or duration
             CooldownFrame_SetTimer(_G[bottomButton .. "Cooldown"], GetTime(), duration, 1)
         end
     end
@@ -399,8 +369,7 @@ function ArchiTotem_OnEvent(event, arg1)
         ArchiTotem_UpdateShown()
         ArchiTotem_SetDirection(ArchiTotem_Options["Appearance"].direction)
         ArchiTotem_SetScale(ArchiTotem_Options["Appearance"].scale)
-        ArchiTotem_Order(ArchiTotem_Options["Order"].first, ArchiTotem_Options["Order"].second,
-            ArchiTotem_Options["Order"].third, ArchiTotem_Options["Order"].forth)
+        ArchiTotem_Order(ArchiTotem_Options["Order"].first, ArchiTotem_Options["Order"].second, ArchiTotem_Options["Order"].third, ArchiTotem_Options["Order"].forth)
     elseif event == "CHAT_MSG_SPELL_FAILED_LOCALPLAYER" then
         ArchiTotemCasted = 0
     elseif event == "SPELLCAST_STOP" then
@@ -713,8 +682,7 @@ function ArchiTotem_Order(first, second, third, forth)
         return "ArchiTotemButton_" .. strupper(string.sub(element, 1, 1)) .. string.sub(element, 2) .. "1"
     end
 
-    local buttons = {formatElement(first), formatElement(second), formatElement(third), formatElement(forth),
-                     "ArchiTotemButton_Totemic1"}
+    local buttons = {formatElement(first), formatElement(second), formatElement(third), formatElement(forth), "ArchiTotemButton_Totemic1"}
 
     ArchiTotem_Options["Order"] = {
         first = strupper(string.sub(first, 1, 1)) .. string.sub(first, 2),
@@ -749,9 +717,9 @@ end
 
 function ArchiTotem_OnUpdate(arg1)
     this.TimeSinceLastUpdate = this.TimeSinceLastUpdate + arg1
+    local currentTime = GetTime()
 
     if this.TimeSinceLastUpdate > CLOCK_UPDATE_RATE then
-        local currentTime = GetTime()
         for k, v in ArchiTotemActiveTotem do
             if currentTime > (v.casted + v.duration) and v.duration > 0 then
                 v = nil
@@ -794,7 +762,6 @@ function ArchiTotem_OnUpdate(arg1)
 end
 
 function ArchiTotem_Command(cmd)
-    -- /slash commands
     local command = string.lower(cmd)
 
     local i = 1
